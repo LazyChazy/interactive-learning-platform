@@ -17,6 +17,8 @@ const EmbeddedQuiz = ({ question, options, answer, explanation }: EmbeddedQuizPr
     setShowExplanation(true);
   };
 
+  const isCorrect = selectedOption === answer;
+
   return (
     <div className="my-6 p-6 bg-indigo-50 border border-indigo-200 rounded-lg shadow-md">
       <p className="font-semibold text-lg mb-4 text-indigo-800">{question}</p>
@@ -26,7 +28,7 @@ const EmbeddedQuiz = ({ question, options, answer, explanation }: EmbeddedQuizPr
             key={idx}
             className={`block w-full text-left px-4 py-2 rounded-md transition-colors ${
               selectedOption === option
-                ? option === answer
+                ? isCorrect
                   ? 'bg-green-200 text-green-800'
                   : 'bg-red-200 text-red-800'
                 : 'bg-white hover:bg-indigo-100 text-indigo-700'
@@ -40,8 +42,8 @@ const EmbeddedQuiz = ({ question, options, answer, explanation }: EmbeddedQuizPr
       </div>
       {showExplanation && (
         <div className="mt-4 p-4 bg-white rounded-md">
-          <p className={selectedOption === answer ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
-            {selectedOption === answer ? 'Correct!' : 'Incorrect.'}
+          <p className={isCorrect ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
+            {isCorrect ? 'Correct!' : 'Incorrect.'}
           </p>
           <p className="text-gray-700 mt-2">{explanation}</p>
         </div>

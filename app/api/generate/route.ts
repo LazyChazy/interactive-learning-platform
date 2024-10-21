@@ -51,14 +51,14 @@ export async function POST(request: Request) {
       }
     `;
 
-
+    console.log('Sending request to OpenAI API...');
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-4o-2024-08-06',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
-        max_tokens: 12000, // Increased tokens for more detailed content
+        max_tokens: 12000,
       },
       {
         headers: {
@@ -68,14 +68,27 @@ export async function POST(request: Request) {
       }
     );
 
+    console.log('Received response from OpenAI API');
     const data = response.data;
     if (!data.choices || !data.choices[0] || !data.choices[0].message || !data.choices[0].message.content) {
       throw new Error('Unexpected API response structure');
     }
     const content = data.choices[0].message.content;
-    const jsonContent = content.replace(/```json\n|\n```/g, '');
-    const parsed = JSON.parse(jsonContent);
+    
+    console.log('API Response Content:', content);
 
+    let parsed;
+    try {
+      const jsonContent = content.replace(/```json\n|\n```/g, '');
+      console.log('Cleaned JSON Content:', jsonContent);
+      parsed = JSON.parse(jsonContent);
+    } catch (parseError) {
+      console.error('JSON Parse Error:', parseError);
+      console.error('JSON Content:', content);
+      throw new Error('Failed to parse API response');
+    }
+
+    console.log('Successfully parsed API response');
     return NextResponse.json(parsed);
   } catch (error) {
     console.error('Error details:', error);
