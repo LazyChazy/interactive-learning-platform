@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Learning Platform
+
+Welcome to the **Interactive Learning Platform** repository. This project uses AI-generated content to help users learn through interactive modules and quizzes. Built with [Next.js](https://nextjs.org/), the platform allows users to explore various topics and engage in learning with AI-created articles and quizzes.
+
+## Features
+
+- AI-generated course content based on user input
+- Interactive quizzes embedded within articles
+- End-of-module quizzes to test understanding
+- Progress tracking with a sidebar
+- Responsive and intuitive UI built with [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Node.js](https://nodejs.org/en/) (version 16.x or higher recommended)
+- [npm](https://www.npmjs.com/) (or yarn, pnpm, etc.)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/your-username/interactive-learning-platform.git
+   cd interactive-learning-platform
 
-## Learn More
+2. Install Dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Set up enviroment variables:
 
-## Deploy on Vercel
+   Create a .env.local file in the root directory and add your API keys (e.g., for OpenAI):
+   ```bash
+   OPENAI_API_KEY=your_openai_api_key
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Running the App
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+Open http://localhost:3000 to see the platform in action.
+
+
+# Building for Production
+
+To create an optimized production build:
+   ```bash
+   npm run build
+   # or
+   yarn build
+   # or
+   pnpm build
+   ```
+Then, to start the production server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   # or
+   pnpm start
+   ```
+
+# Linting
+
+To run ESLint and check for issues:
+   ```bash
+   npm run lint
+   ```
+
+## Folder Structure
+
+- **app/**: Contains the main application components, API routes, and pages.
+- **components/**: UI components like articles, quizzes, and the sidebar.
+- **context/**: Context providers for managing global state (e.g., progress, module data).
+- **public/**: Static files like images or icons.
+- **styles/**: Global CSS and Tailwind configuration.
+- **api/generate/route.ts**: API route that generates course content using OpenAI.
+
+## Usage
+
+The platform allows users to input a topic of interest, and AI generates an interactive course with multiple modules. Each module includes an article, embedded quizzes, and a final quiz. The user’s progress is tracked, and scores from quizzes are displayed.
+
+Thanks for checking out the Interactive Learning Platform! We hope you enjoy using it.
+
+
+
+
+
